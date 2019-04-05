@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<div class="page-content">
+  <%= @page.title %>
+  <%= raw RedCloth.new(@page.content).to_html %>
+  
+</div>
+
+<%= link_to 'Edit', edit_page_path(@page.id) %>
+<%= link_to 'Back', pages_path %>

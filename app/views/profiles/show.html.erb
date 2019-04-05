@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= "@#{@profile.user.email}" %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @profile.avatar %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @profile.name %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @profile.user_id %>
+</p>
+
+<p>
+  <strong>Place:</strong>
+  <%= @profile.place %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @profile.website %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @profile.bio %>
+</p>
+
+<% if request.url.include? "/me"%>
+  <%= link_to 'Editer', edit_profile_path('me') %>
+<% end %>
+<%= link_to 'Back', profiles_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @news.title %>
+</p>
+
+<p>
+  <strong>Summary:</strong>
+  <%= @news.summary %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= raw RedCloth.new(@news.content).to_html %>
+</p>
+
+<%= link_to 'Edit', edit_news_path(@news) %> |
+<%= link_to 'Back', news_index_path %>
+
+<span><%= @nbComments %> Commentaire(s)</span>
+
+<% if user_signed_in? %>
+  <%= render 'comments/CommentsForm', comment: @comment %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <table>
+    <tr>
+      <td><%= comment.comment %></td>
+    </tr>
+  </table>
+<% end %>

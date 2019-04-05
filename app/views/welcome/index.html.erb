@@ -1,0 +1,47 @@
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-4 jumbotron">
+        <strong>Gazooys</strong>
+
+        <table>
+            <thead>
+                <tr>
+                <th>User</th>
+                <th>Text</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @gazooys.reverse.each do |gazooy| %>
+                <tr>
+                    <td><%= gazooy.user.email %></td>
+                    <td><%= gazooy.text %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+        <br>
+        <%= link_to 'New Gazooy', new_gazooy_path %>
+        </div>
+
+        <div class="col-md-8">
+            <div class="well">
+                <h1>You're on Gazooyr !</h1>
+                <p>Le twitter qu'il est vachement plus mieux</p>
+                <table class="pages">
+                    <% @pages.reverse.each do |page| %>
+                    <tr>
+                        <td><%= page.title %></td>
+                        <% if page.slug != nil %>
+                            <td><%= link_to 'Show', page_path(page.slug) %></td>
+                        <% else %>
+                            <td><%= link_to 'Show', page_path(page.id) %></td>
+                        <% end %>
+                    </tr>
+                    <% end %>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

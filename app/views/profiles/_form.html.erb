@@ -1,0 +1,44 @@
+<%= form_with(model: profile, local: true, id: "edit_profile_" + current_user.profile.user_id.to_s()) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= image_tag(profile.avatar_url) if profile.avatar? %>
+    <%= form.file_field :avatar %>
+    <%= form.hidden_field :avatar_cache %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :place %>
+    <%= form.text_field :place %>
+  </div>
+
+  <div class="field">
+    <%= form.label :website %>
+    <%= form.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_field :bio %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Mettre à jour !' %>
+  </div>
+<% end %>

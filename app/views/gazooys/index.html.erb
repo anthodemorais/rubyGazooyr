@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gazooys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Text</th>
+      <th>Profile</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody class="gazooies-block">
+    <tr class="gazooy-block">
+      <% @gazooys.reverse.each do |gazooy| %>
+          <td><%= gazooy.user.email %></td>
+          <td><%= gazooy.text %></td>
+           <td>
+            <a class="avatar">
+              <img src="<%= gazooy.user.profile.avatar.thumb.url %>" class="avatar">
+            </a>
+          </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gazooy', new_gazooy_path %>
